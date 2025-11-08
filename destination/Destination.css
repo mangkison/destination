@@ -4,8 +4,15 @@ html, body {
   height: 100%;
   margin: 0;
   
+  /* 전체 배경 */
   background-color: gray; /* 바깥 배경색 */
+  background-image: url(./img/Gemini_Generated_Image_b6sclgb6sclgb6sc.png);
+  background-size: cover; /* 배경 이미지 크기 조절 */
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
   font-family: sans-serif; /* 가독성을 위한 기본 글꼴 */
+
 }
 
 /* 페이지 전체를 감싸는 흰색 영역 스타일 */
@@ -13,7 +20,7 @@ html, body {
   max-width: 960px;
   margin: 0 auto;
   padding: 20px;
-  border: 2px solid #e9ecef;
+  border: 2px dashed #e9ecef;
   background-color: #ffffff; 
   min-height: 100%;
   box-sizing: border-box;
@@ -32,6 +39,7 @@ main {
 /* 모든 주요 영역에 안쪽 여백을 주어 콘텐츠가 벽에 붙지 않게 함 */
 header, main, footer  {
   padding: 0px;
+  background-color: #f1f1f1;
 }
 /* 제목 밑 p 조절 */
 header p {
@@ -40,28 +48,77 @@ header p {
     margin-top: -20px;
     margin-bottom: 20px;
 }
-/* 내비게이션 메뉴 중앙 정렬 */
-header nav {
-    text-align: center;
+
+/* 링크 클래스 */
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 28px
 }
 
-/* 내비게이션 링크 폰트사이즈조절 */
-.navigation a {
-    font-size: 14px
+/* 상태별 색/밑줄 */
+a:visited {
+  color: gray;
 }
-/* 소제목 (h2, h3) */
-h2 {
-    font-size: 32px;
+a:hover {
+  color: orange;
+  text-decoration: underline;
 }
-h3 {
-    font-size: 24px;
+a:active {
+  color: red;
 }
+/* ======== 네비게이션 바 스타일 ======== */
+  .navigation ul {
+    font-size: 5px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: darkcyan;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .navigation ul li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .navigation ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-size: 15px;
+  }
+
+  .navigation ul li a:hover {
+    background-color: teal;
+    
+  }
+
+  .navigation ul li ul.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: darkcyan;
+    min-width: 180px;
+  }
+
+  .navigation ul li:hover ul.dropdown-menu {
+    display: block;
+  }
+
+  .navigation ul li ul.dropdown-menu li {
+    display: block;
+  }
 
 /* 구분선 */
 hr {
   border: none; 
-  border-top: 1px solid black;
-  margin: 20px 0; 
+    border-top: 1px solid black;
+    margin: 20px 0; 
 }
 
 /* ======== about destinations sector ======== */
@@ -79,6 +136,7 @@ img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+    border-style: collapse;
 }
 
 /* 링크 */
@@ -94,10 +152,13 @@ a {
 table {
   width: 100%;
   margin-top: 20px;
-  border-collapse: collapse;
+  border-style: solid;
+  border-width: 2px;
+
 }
 /* 테이블 캡션 */
 .attractions-table caption {
+  text-transform: uppercase;
   caption-side: top;
   font-size: 24px;
   font-weight: bold;
@@ -105,17 +166,30 @@ table {
 }
 /* 테이블 링크 폰트 */
 .attractions-table a {
+  text-decoration: underline;
+  text-indent: 2em;
     font-size: 20px;
+    letter-spacing: normal;
 }
 /* 테이블 헤더 및 데이터 셀 */
 th, td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  
 }
-th {
-    background-color: #f8f9fa;
-}
+  tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+div.overflow-cell {
+    max-width: auto; /* 원하는 최대 너비 설정 */
+    overflow: scroll; /* 넘치는 텍스트 숨기기 */
+    height: 150px;
+} 
+
 
 /*========FOOD SECTION STYLES ==========*/
 #Food {
@@ -123,11 +197,56 @@ th {
     padding: 20px;
     border-radius: 8px;
 }
+#Food img.right{
+  float: right;
+  width: 30%; 
+  height: auto;
+  margin: 10px 0px 10px 20px; 
+}
+
+#Food img.left{
+  float: left;
+  width: 30%; 
+  height: auto;
+    margin: 10px 20px 10px 0;
+}
+
+#Food img.center{
+  display: block;
+ margin: 20px auto; 
+  width: 28%;
+  height: auto;
+}
+#Food div.food-images::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 #Food li {
     list-style-type: disc;
     padding-left: 20px;
     margin-bottom: 10px;
     font-size: auto;
+}
+#Food li.highlight_dim {
+    font-weight: bold;
+    color: rgb(255, 69, 0);
+    font-size: 20px;
+}
+#Food li.highlight_egg {
+    font-weight: bold;
+    color: rgb(255, 140, 0);
+    font-size: 20px;
+}
+#Food li.highlight_noodles {
+    font-weight: bold;
+    color: hsl(48, 100%, 50%);
+    font-size: 20px;
+}
+#Food li.highlight_milk {
+    font-weight: bold;
+    color: #8B4513;
+    font-size: 20px;
 }
 
 /* ===========media============ */
@@ -135,7 +254,8 @@ th {
 .media figcaption {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 30;
+    font-size: 30px;
+    line-height: 1.6;
 }
 .video {
     display: flex;
@@ -143,12 +263,17 @@ th {
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    width: 800px;
+    height: auto;
 }
 /*============== footer================= */
 footer {
     background-color: #f1f1f1;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 15px 20px 3px; /* 위, 오른쪽, 아래, 왼쪽*/
     font-size: 14px;
     color: #555;
     margin-top: 20px;
